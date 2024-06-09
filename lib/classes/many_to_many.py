@@ -13,7 +13,7 @@ class Band:
         if isinstance(value, str) and len(value) > 0:
             self._name = value
         else:
-            raise ValueError('name must a non-empty string.')
+            raise ValueError("name must a non-empty string.")
 
     @property
     def hometown(self):
@@ -21,7 +21,7 @@ class Band:
 
     @hometown.setter
     def hometown(self, value):
-        raise AttributeError('hometown is immutable')
+        raise AttributeError("hometown is immutable")
 
     def concerts(self):
         return [concert for concert in Concert.all if concert.band is self]
@@ -54,7 +54,7 @@ class Concert:
         if isinstance(value, str) and len(value) > 0:
             self._date = value
         else:
-            raise ValueError('date must be non-empty string')
+            raise ValueError("date must be non-empty string")
 
     @property
     def band(self):
@@ -65,7 +65,7 @@ class Concert:
         if isinstance(value, Band):
             self._band = value
         else:
-            raise ValueError('Band must be an instance of band class')
+            raise ValueError("Band must be an instance of band class")
 
     @property
     def venue(self):
@@ -76,13 +76,10 @@ class Concert:
         if isinstance(value, Venue):
             self._venue = value
         else:
-            raise ValueError('venue must be an instance of venue class')
+            raise ValueError("venue must be an instance of venue class")
 
     def hometown_show(self):
         return self.band.hometown == self.venue.city
-
-    def introduction(self):
-        return f'Was sup {self.venue.city}! We are {self.band.name} from {self.band.hometown}'
 
     @date.setter
     def date(self, value):
@@ -103,7 +100,7 @@ class Venue:
         if isinstance(value, str) and len(value) > 0:
             self._name = value
         else:
-            raise ValueError('name must be a non-empty string')
+            raise ValueError("name must be a non-empty string")
 
     @property
     def city(self):
@@ -114,7 +111,7 @@ class Venue:
         if isinstance(value, str) and len(value) > 0:
             self._city = value
         else:
-            raise ValueError('city must be a non-empty string')
+            raise ValueError("city must be a non-empty string")
 
     def concerts(self):
         return [concert for concert in Concert.all if concert.venue is self]
